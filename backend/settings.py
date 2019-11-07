@@ -89,8 +89,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.environ.get('DJANGO_DEFAULT_DATABASE_NAME', ''),
+        'ENGINE': 'mysql.connector.django',
+        'USER': 'root',
+        'PASSWORD': os.environ.get('DJANGO_DATABASE_PWD', ''),
+        'OPTIONS': {'autocommit': True, 'charset': 'utf8mb4',},
     }
 }
 
