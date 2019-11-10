@@ -3,7 +3,7 @@ from.post import Post
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=12, unique=True, blank=False)
+    name = models.CharField(unique=True, blank=False)
     posts = models.ManyToManyField(Post, blank=True)
 
     class Meta:
